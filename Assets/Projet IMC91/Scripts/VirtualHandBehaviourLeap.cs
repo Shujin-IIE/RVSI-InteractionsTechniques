@@ -48,6 +48,15 @@ public class VirtualHandBehaviourLeap : VirtualHandBehaviour
             {
                 lastCollidedObject.transform.parent = null;
                 if (lastCollidedObject.GetComponent<Rigidbody>() != null) lastCollidedObject.GetComponent<Rigidbody>().isKinematic = false;
+
+				// If the manipulated object is coliding the target => detroy
+				if (currentManipulatedObject != null && currentManipulatedObject.GetComponent<ManipulatedObject>().IsHittingTarget)
+				{
+					GameManager.instance.Timer.AddIntermediate();
+					Destroy(currentManipulatedObject);
+					ColorizeVirtualHand(Color.gray);
+				}
+
                 currentManipulatedObject = null;
             }
         }

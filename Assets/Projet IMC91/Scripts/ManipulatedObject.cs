@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Cube : MonoBehaviour
+public class ManipulatedObject : MonoBehaviour
 {
 	public bool IsHittingTarget { get; private set; }
 

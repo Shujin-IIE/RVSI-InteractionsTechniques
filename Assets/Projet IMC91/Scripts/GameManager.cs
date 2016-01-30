@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     //liste des obstacles
     public List<GameObject> obstacleObjects;
 
+	public Timer Timer { get; private set; }
+
     protected void Start()
     {
         if (instance == null)
@@ -21,8 +23,10 @@ public class GameManager : MonoBehaviour
         else
             Debug.LogWarning("Multiple instances of GameManager");
 
+		Timer = GetComponent<Timer>();
+
 		// TODO: Remove the automatic start when the start feature is ready
-		GetComponent<Timer>().Run();
+		Timer.Run();
     }
 
     protected void Update()
