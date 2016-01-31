@@ -24,9 +24,6 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Multiple instances of GameManager");
 
 		Timer = GetComponent<Timer>();
-
-		// TODO: Remove the automatic start when the start feature is ready
-		Timer.Run();
     }
 
     protected void Update()

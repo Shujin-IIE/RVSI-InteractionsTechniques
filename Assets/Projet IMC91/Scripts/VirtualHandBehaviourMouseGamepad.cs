@@ -24,11 +24,27 @@ public class VirtualHandBehaviourMouseGamepad : VirtualHandBehaviour
 
     public bool collisionOn = false;
 
+	private bool isCollidingWithTarget;
+
+	protected override void Start()
+	{
+		base.Start();
+		isCollidingWithTarget = false;
+	}
+
     protected override void Update()
     {
         SelectionManipulationManager();
-
     }
+
+	private void OnTriggerEnter(Collider col)
+	{
+		if (col.CompareTag("Target"))
+		{
+			isCollidingWithTarget = true;
+			Debug.Log("(Mouse) Hand<->Target " + isCollidingWithTarget);
+		}
+	}
 
     private void OnTriggerStay(Collider col)
     {
@@ -72,6 +88,12 @@ public class VirtualHandBehaviourMouseGamepad : VirtualHandBehaviour
             lastCollidedObject = null;
             ColorizeVirtualHand(Color.gray);
         }
+
+		if (col.CompareTag("Target"))
+		{
+			isCollidingWithTarget = false;
+			Debug.Log("(Mouse) Hand</>Target " + isCollidingWithTarget);
+		}
     }
 
     private void SelectionManipulationManager()
@@ -105,5 +127,10 @@ public class VirtualHandBehaviourMouseGamepad : VirtualHandBehaviour
             }
             else manipOn = false;
         }
+
+		if (isCollidingWithTarget && Input.GetButton(manipulationButtonNameOnTracker))
+		{
+			GameManager.instance.Timer.Run();
+		}
     }
 }

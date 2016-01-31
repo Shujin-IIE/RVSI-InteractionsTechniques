@@ -18,16 +18,28 @@ public class VirtualHandBehaviourLeap : VirtualHandBehaviour
 
     public bool collisionOn = false;
 
+	private bool isCollidingWithTarget;
+
     protected override void Start()
     {
         base.Start();
         trackerLeap = (Virtual3DTrackerLeap)tracker;
+		isCollidingWithTarget = false;
     }
 
     protected override void Update()
     {
         SelectionManipulationManager();
     }
+
+	private void OnTriggerEnter(Collider col)
+	{
+		if (col.CompareTag("Target"))
+		{
+			Debug.Log("(Leap) Hand<->Target");
+			isCollidingWithTarget = true;
+		}
+	}
 
     private void OnTriggerStay(Collider col)
     {
@@ -71,6 +83,12 @@ public class VirtualHandBehaviourLeap : VirtualHandBehaviour
             lastCollidedObject = null;
             ColorizeVirtualHand(Color.gray);
         }
+
+		if (col.CompareTag("Target"))
+		{
+			Debug.Log("(Leap) Hand</>Target");
+			isCollidingWithTarget = false;
+		}
     }
 
     private void SelectionManipulationManager()
@@ -83,5 +101,10 @@ public class VirtualHandBehaviourLeap : VirtualHandBehaviour
         {
             manipOn = false;
         }
+
+		if (trackerLeap.IsGrabbing && isCollidingWithTarget)
+		{
+			GameManager.instance.Timer.Run();
+		}
     }
 }
