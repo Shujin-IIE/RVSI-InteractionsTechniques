@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -68,7 +68,8 @@ public class VirtualHandBehaviourLeap : VirtualHandBehaviour
                     Vector3 PositionCube = currentManipulatedObject.transform.position;
                     GameObject Target = GameObject.Find("Target");
                     GameManager.instance.Log.distances.Add(Vector3.Distance(PositionCube, Target.transform.position));
-                    Destroy(currentManipulatedObject);
+					Destroy(currentManipulatedObject);
+					GameManager.instance.InstantiateNextObject();
 					ColorizeVirtualHand(Color.gray);
 				}
 

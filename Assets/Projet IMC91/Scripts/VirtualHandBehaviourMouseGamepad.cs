@@ -74,6 +74,7 @@ public class VirtualHandBehaviourMouseGamepad : VirtualHandBehaviour
                     GameObject Target = GameObject.Find("Target");
                     GameManager.instance.Log.distances.Add(Vector3.Distance(PositionCube, Target.transform.position));
 					Destroy(currentManipulatedObject);
+					GameManager.instance.InstantiateNextObject();
 					ColorizeVirtualHand(Color.gray);
 				}
 

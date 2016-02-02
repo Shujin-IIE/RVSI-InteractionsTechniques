@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     //liste des obstacles
     public List<GameObject> obstacleObjects;
+	private int index = 0;
 
 	public Timer Timer { get; private set; }
     public Log Log { get; private set; }
@@ -26,9 +27,24 @@ public class GameManager : MonoBehaviour
 
 		Timer = GetComponent<Timer>();
         Log = GetComponent<Log>();
+
+		foreach (GameObject go in interactibleObjects)
+		{
+			go.SetActive(false);
+		}
+		InstantiateNextObject();
     }
 
     protected void Update()
     {
     }
+
+	public void InstantiateNextObject()
+	{
+		if (interactibleObjects.Count < index)
+		{
+			interactibleObjects[index].SetActive(true);
+			index++;
+		}
+	}
 }

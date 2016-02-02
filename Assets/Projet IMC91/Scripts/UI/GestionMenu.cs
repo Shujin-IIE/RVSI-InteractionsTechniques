@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -83,27 +83,47 @@ public class GestionMenu : MonoBehaviour
 	//Choix des tests ( scenes )
 	public void ChooseMM()   // Scene Mouse Manipulation
 	{
-		// Transférer le numéro du testeur au Log 
 		var anim = MenuPanel.GetComponent<Animation>();
 		anim.Play("HideMenu");
-		//Charger la scene 
-		//   Application.LoadLevel("Mouse Scene");
+
+		if (Application.loadedLevelName != "Mouse Scene")
+		{
+			Application.LoadLevel("Mouse Scene");
+		}
 	}
 
 	public void ChooseMMWall()   // Scene Mouse Manipulation Wall
 	{
+		var anim = MenuPanel.GetComponent<Animation>();
+		anim.Play("HideMenu");
 
+		if (Application.loadedLevelName != "Mouse Wall Scene")
+		{
+			Application.LoadLevel("Mouse Wall Scene");
+		}
 	}
 
 
 	public void ChooseML()   // Scene Leap Manipulation
 	{
+		var anim = MenuPanel.GetComponent<Animation>();
+		anim.Play("HideMenu");
 
+		if (Application.loadedLevelName != "Leap Scene")
+		{
+			Application.LoadLevel("Leap Scene");
+		}
 	}
 
 	public void ChooseMLWall ()   // Scene Leap Manipulation Wall
 	{
+		var anim = MenuPanel.GetComponent<Animation>();
+		anim.Play("HideMenu");
 
+		if (Application.loadedLevelName != "Leap Wall Scene")
+		{
+			Application.LoadLevel("Leap Wall Scene");
+		}
 	}
 
 	public void NouveauTest()
