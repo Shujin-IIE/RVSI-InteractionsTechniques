@@ -4,4 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Projet IMC91/Scenes/Mouse Scene.unity
+  - enabled: 1
+    path: Assets/Projet IMC91/Scenes/Mouse Wall Scene.unity
+  - enabled: 1
+    path: Assets/Projet IMC91/Scenes/Leap Scene.unity
+  - enabled: 1
+    path: Assets/Projet IMC91/Scenes/Leap Wall Scene.unity

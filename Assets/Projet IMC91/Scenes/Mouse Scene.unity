@@ -362,6 +362,10 @@ Prefab:
       propertyPath: fileName
       value: Mouse
       objectReference: {fileID: 0}
+    - target: {fileID: 11449096, guid: 20b2edf1f5d9cd74887cda4eaa168104, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20b2edf1f5d9cd74887cda4eaa168104, type: 2}
   m_IsPrefabParent: 0
