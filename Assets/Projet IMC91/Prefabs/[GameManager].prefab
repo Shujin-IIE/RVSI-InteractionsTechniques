@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11469482}
   - 114: {fileID: 11469480}
   - 114: {fileID: 11449096}
+  - 114: {fileID: 11453010}
   m_Layer: 0
   m_Name: '[GameManager]'
   m_TagString: Untagged
@@ -36,13 +37,24 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169482}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4332b55ba4991154882f1bf55231dfc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: sample.csv
-  timeSample: .5
+  timeSample: 10
+--- !u!114 &11453010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9844ab83a94d44adb91e1ce375b7b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11469480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,4 +98,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169482}
   m_IsPrefabParent: 1
-  m_IsExploded: 1
