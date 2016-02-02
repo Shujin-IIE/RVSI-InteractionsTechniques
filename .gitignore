@@ -28,3 +28,4 @@ sysinfo.txt
 # Project ignore
 sample.csv
 bin
+sample*.csv*
