@@ -70,6 +70,9 @@ public class VirtualHandBehaviourMouseGamepad : VirtualHandBehaviour
 				if (currentManipulatedObject != null && currentManipulatedObject.GetComponent<ManipulatedObject>().IsHittingTarget)
 				{
 					GameManager.instance.Timer.AddIntermediate();
+                    Vector3 PositionCube = currentManipulatedObject.transform.position;
+                    GameObject Target = GameObject.Find("Target");
+                    GameManager.instance.Log.distances.Add(Vector3.Distance(PositionCube, Target.transform.position));
 					Destroy(currentManipulatedObject);
 					ColorizeVirtualHand(Color.gray);
 				}

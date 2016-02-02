@@ -16,12 +16,15 @@ public class Log : MonoBehaviour
     private StreamWriter stream;
 	private Timer Timer;
     private CountCollision[] CountCollisions;
+    public int NumTester = 0;
+    public List<float> distances;
 
     protected void Start()
     {
 		String timeStamp = DateTime.Now.ToString("dd_MM_yy_HH_mm_ss");
 		Timer = GetComponent<Timer> ();
         CountCollisions = FindObjectsOfType<CountCollision>();
+        distances = new List<float>();
         if (String.Compare(fileName, "") != 0)
         {
             Debug.Log(String.Format("Creation du fichier {0}. Début ", fileName));
@@ -50,7 +53,15 @@ public class Log : MonoBehaviour
             {
                 SumCollisions += cc.countCollisions;
             }
-            stream.WriteLine(Timer.IntermediateTime[0] + ";" + Timer.IntermediateTime[1] + ";" + Timer.IntermediateTime[2] + ";" + Timer.CumulativeTime[2] + ";" + SumCollisions);
+            stream.Write(NumTester);
+            stream.Write(Timer.IntermediateTime[0]);
+            stream.Write(Timer.IntermediateTime[1]);
+            stream.Write(Timer.IntermediateTime[2]);
+            stream.Write(Timer.CumulativeTime[2]);
+            stream.Write(distances[0]);
+            stream.Write(distances[1]);
+            stream.Write(distances[2]);
+            stream.Write(SumCollisions);
         }
     }
 

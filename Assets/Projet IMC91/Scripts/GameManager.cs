@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> obstacleObjects;
 
 	public Timer Timer { get; private set; }
+    public Log Log { get; private set; }
 
     protected void Start()
     {
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Multiple instances of GameManager");
 
 		Timer = GetComponent<Timer>();
+        Log = GetComponent<Log>();
     }
 
     protected void Update()

@@ -4,6 +4,7 @@ using System.Collections;
 public class ManipulatedObject : MonoBehaviour
 {
 	public bool IsHittingTarget { get; private set; }
+    public Vector3 position;
 
 	// Use this for initialization
 	void Start()

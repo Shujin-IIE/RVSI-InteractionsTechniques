@@ -72,6 +72,7 @@ public class GestionMenu : MonoBehaviour
 			MLBtn.interactable = true;
 
 			MLWallBtn.interactable = true;
+            GameManager.instance.Log.NumTester = NumeroTesteur;
 
 		}
 
