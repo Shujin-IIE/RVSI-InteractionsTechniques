@@ -26,6 +26,11 @@ ExportedObj/
 sysinfo.txt
 
 # Project ignore
-sample.csv
 bin
+
+# Log ignore
 sample*.csv*
+MouseWall*.csv*
+Mouse*.csv*
+Leap*.csv*
+LeapWall*.csv*
