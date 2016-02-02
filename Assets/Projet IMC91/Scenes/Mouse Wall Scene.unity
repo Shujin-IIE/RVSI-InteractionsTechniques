@@ -531,6 +531,10 @@ Prefab:
       propertyPath: obstacleObjects.Array.data[4]
       value: 
       objectReference: {fileID: 655143221}
+    - target: {fileID: 11449096, guid: 20b2edf1f5d9cd74887cda4eaa168104, type: 2}
+      propertyPath: fileName
+      value: MousseWall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20b2edf1f5d9cd74887cda4eaa168104, type: 2}
   m_IsPrefabParent: 0
@@ -870,7 +874,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 8
 --- !u!1 &1733562794 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 139486, guid: c4026f90f37b27d40bb1a88a5d65079b, type: 2}

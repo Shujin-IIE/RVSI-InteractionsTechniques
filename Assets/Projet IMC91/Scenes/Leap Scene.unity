@@ -210,6 +210,10 @@ Prefab:
       propertyPath: obstacleObjects.Array.data[4]
       value: 
       objectReference: {fileID: 208147475}
+    - target: {fileID: 11449096, guid: 20b2edf1f5d9cd74887cda4eaa168104, type: 2}
+      propertyPath: fileName
+      value: Leap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20b2edf1f5d9cd74887cda4eaa168104, type: 2}
   m_IsPrefabParent: 0
