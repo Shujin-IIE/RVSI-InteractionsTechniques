@@ -6,11 +6,15 @@ public class ManipulatedObject : MonoBehaviour
 	public bool IsHittingTarget { get; private set; }
     public Vector3 position;
 
-	// Use this for initialization
-	void Start()
+    public Material materialInCollision;
+    private Material myMaterial;
+
+    // Use this for initialization
+    void Start()
 	{
 		IsHittingTarget = false;
-	}
+        myMaterial = this.GetComponent<Renderer>().material;
+    }
 	
 	// Update is called once per frame
 	void Update()
@@ -23,7 +27,8 @@ public class ManipulatedObject : MonoBehaviour
 		Debug.Log("Collision enter detected");
 		if (other.CompareTag("Target"))
 		{
-			Debug.Log("Target hit");
+            this.GetComponent<Renderer>().material = materialInCollision;
+            Debug.Log("Target hit");
 			IsHittingTarget = true;
 		}
 	}
@@ -33,7 +38,8 @@ public class ManipulatedObject : MonoBehaviour
 		Debug.Log("Collision exit detected");
 		if (other.CompareTag("Target"))
 		{
-			Debug.Log("Target exit");
+            this.GetComponent<Renderer>().material = myMaterial;
+            Debug.Log("Target exit");
 			IsHittingTarget = false;
 		}
 	}
