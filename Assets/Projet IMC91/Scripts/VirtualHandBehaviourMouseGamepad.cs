@@ -132,8 +132,9 @@ public class VirtualHandBehaviourMouseGamepad : VirtualHandBehaviour
             else manipOn = false;
         }
 
-		if (isCollidingWithTarget && Input.GetButton(manipulationButtonNameOnTracker))
+		if (isCollidingWithTarget && Input.GetButtonUp(manipulationButtonNameOnTracker))
 		{
+            GameManager.instance.InstantiateNextObject();
 			GameManager.instance.Timer.Run();
 		}
     }

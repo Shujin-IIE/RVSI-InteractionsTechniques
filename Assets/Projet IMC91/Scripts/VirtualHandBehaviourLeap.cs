@@ -107,8 +107,9 @@ public class VirtualHandBehaviourLeap : VirtualHandBehaviour
         }
 
 		if (trackerLeap.IsGrabbing && isCollidingWithTarget)
-		{
-			GameManager.instance.Timer.Run();
+        {
+            GameManager.instance.InstantiateNextObject();   // TODO : test in real-time with leap or change by transition
+            GameManager.instance.Timer.Run();
 		}
     }
 }
