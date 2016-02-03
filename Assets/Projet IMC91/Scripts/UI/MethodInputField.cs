@@ -8,7 +8,7 @@ public class MethodInputField : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Text = GetComponent<Text>;
+		Text = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
