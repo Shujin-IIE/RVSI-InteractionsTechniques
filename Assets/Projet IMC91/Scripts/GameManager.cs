@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Singleton GameManager
@@ -10,6 +11,9 @@ public class GameManager : MonoBehaviour
 
     // distance from target to cubes
     protected const float objectToTargetDistance = 14f;
+
+    // number of trial being executed
+    public int trial;
 
     //liste des objets à remplir à la main
     public List<GameObject> interactibleObjects;
@@ -24,8 +28,13 @@ public class GameManager : MonoBehaviour
 	public Timer Timer { get; private set; }
     public Log Log { get; private set; }
 
+    // animated pointing arrow
+    public GameObject Arrow;
+
     protected void Start()
     {
+        trial++;
+
         if (instance == null)
             instance = this;
         else
@@ -41,7 +50,8 @@ public class GameManager : MonoBehaviour
 		{
 			go.SetActive(false);
 		}
-		//InstantiateNextObject();
+        //InstantiateNextObject();
+        Arrow.GetComponent<Animation>().Play("ShowArrow");
     }
 
     protected void Update()
@@ -50,6 +60,8 @@ public class GameManager : MonoBehaviour
 
 	public void InstantiateNextObject()
 	{
+        Arrow.SetActive(false);
+        if (interactibleObjects.Where(t => t.activeSelf).FirstOrDefault() != null) return;
 		if (index < interactibleObjects.Count)
         {
             GameObject[] gos;
@@ -67,11 +79,6 @@ public class GameManager : MonoBehaviour
             index++;
 		}
 	}
-
-    private List<Vector3> GetRandomPositions()
-    {
-        return new List<Vector3>();
-    }
 }
 
 static class RandomizableList

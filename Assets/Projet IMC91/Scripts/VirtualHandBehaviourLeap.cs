@@ -68,8 +68,9 @@ public class VirtualHandBehaviourLeap : VirtualHandBehaviour
                     Vector3 PositionCube = currentManipulatedObject.transform.position;
                     GameObject Target = GameObject.Find("Target");
                     GameManager.instance.Log.distances.Add(Vector3.Distance(PositionCube, Target.transform.position));
-					Destroy(currentManipulatedObject);
-					GameManager.instance.InstantiateNextObject();
+                    //Destroy(currentManipulatedObject);
+                    currentManipulatedObject.SetActive(false);
+                    GameManager.instance.InstantiateNextObject();
 					ColorizeVirtualHand(Color.gray);
 				}
 
