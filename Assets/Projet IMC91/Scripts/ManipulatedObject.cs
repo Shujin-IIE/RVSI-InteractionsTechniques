@@ -6,12 +6,15 @@ public class ManipulatedObject : MonoBehaviour
 	public bool IsHittingTarget { get; private set; }
     public Vector3 position;
 
+    private Vector3 initialPosition;
+
     public Material materialInCollision;
     private Material myMaterial;
 
     // Use this for initialization
     void Start()
 	{
+        initialPosition = this.transform.position;
 		IsHittingTarget = false;
         myMaterial = this.GetComponent<Renderer>().material;
     }
@@ -43,4 +46,10 @@ public class ManipulatedObject : MonoBehaviour
 			IsHittingTarget = false;
 		}
 	}
+
+    public void SetInitialPosition()
+    {
+        this.transform.position = initialPosition;
+        this.GetComponent<Renderer>().material = myMaterial;
+    }
 }

@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    // how many trial per condition
+    protected const int TrialsQuantity = 3;
+
     // distance from target to cubes
     protected const float objectToTargetDistance = 14f;
 
@@ -30,6 +33,9 @@ public class GameManager : MonoBehaviour
 
     // animated pointing arrow
     public GameObject Arrow;
+
+    // trial panel
+    public GameObject TrialPanel;
 
     protected void Start()
     {
@@ -77,8 +83,31 @@ public class GameManager : MonoBehaviour
             interactibleObjects[index].SetActive(true);
             //Debug.Log((gos[0].transform.position - interactibleObjects[index].transform.position).magnitude);
             index++;
-		}
-	}
+		} else
+        {
+            interactibleObjectsDirections = new List<Vector3>() { new Vector3(Mathf.Sqrt(3) / 2, 0, 1f / 2), new Vector3(Mathf.Sqrt(3) / 2, 0, -1f / 2), new Vector3(1, 0, 0) };
+            interactibleObjectsDirections.Shuffle();
+
+            foreach (GameObject go in interactibleObjects)
+            {
+                go.SetActive(false);
+            }
+
+            index = 0;
+            trial++;
+
+            if (trial == TrialsQuantity)
+            {
+                trial = 1;
+                // show menu to click next condition
+            }
+
+            Arrow.SetActive(true);
+            TrialPanel.GetComponent<Animation>().Play("HideTrials");
+            Arrow.GetComponent<Animation>().Play("ShowArrow");
+            // reset timmer - And I didnt see how the log is working... but: tell the log to save the trial
+        }
+    }
 }
 
 static class RandomizableList
