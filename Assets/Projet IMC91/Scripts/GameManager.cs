@@ -109,8 +109,10 @@ public class GameManager : MonoBehaviour
             trial++;
             Log.LogSave();
             Timer.InitTimer();
-            CountCollisions[0].ResetCollision();
-            CountCollisions[1].ResetCollision();
+            foreach (CountCollision cc in CountCollisions)
+            {
+                cc.ResetCollision();
+            }
 
             Arrow.SetActive(true);
             TrialPanel.GetComponent<Animation>().Play("HideTrials");
