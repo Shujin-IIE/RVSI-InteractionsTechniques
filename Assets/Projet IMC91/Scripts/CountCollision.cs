@@ -45,8 +45,9 @@ public class CountCollision : MonoBehaviour {
 		}
 	}
 
-	int GetCountCollision(){
-		return countCollisions;
-	}
+    public void ResetCollision()
+    {
+        countCollisions = 0;
+    }
 }
 	

@@ -17,6 +17,7 @@ public class Log : MonoBehaviour
 	private Timer Timer;
     private CountCollision[] CountCollisions;
     public int NumTester = 0;
+    public int NumCondition = 0;
     public List<float> distances;
 
     protected void Start()
@@ -32,7 +33,7 @@ public class Log : MonoBehaviour
             stream = new StreamWriter(Application.dataPath + "/" + fileName + timeStamp + ".csv");
             // Add some text to the file.
             stream.Write("Fichier de Log : ");
-			stream.WriteLine("id;TimerCube1;TimerCube2;TimerCube3;Timer;DistanceCube1;DistanceCube2;DistanceCube3;WallCollision");
+			stream.WriteLine("id;NumCondition;TimerCube1;TimerCube2;TimerCube3;Timer;DistanceCube1;DistanceCube2;DistanceCube3;WallCollision");
             stream.WriteLine("-------------------");
 
             //InvokeRepeating("writeLine", 0.1f, timeSample);
@@ -46,23 +47,18 @@ public class Log : MonoBehaviour
 
     protected void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+
+    }
+
+    public void LogSave()
+    {
+        int SumCollisions = 0;
+        foreach (CountCollision cc in CountCollisions)
         {
-            int SumCollisions = 0; 
-            foreach (CountCollision cc in CountCollisions)
-            {
-                SumCollisions += cc.countCollisions;
-            }
-            stream.Write(NumTester);
-            stream.Write(Timer.IntermediateTime[0]);
-            stream.Write(Timer.IntermediateTime[1]);
-            stream.Write(Timer.IntermediateTime[2]);
-            stream.Write(Timer.CumulativeTime[2]);
-            stream.Write(distances[0]);
-            stream.Write(distances[1]);
-            stream.Write(distances[2]);
-            stream.Write(SumCollisions);
+            SumCollisions += cc.countCollisions;
         }
+        stream.WriteLine(NumTester + ";" + NumCondition + ";" + Timer.IntermediateTime[0] + ";" + Timer.IntermediateTime[1] + ";" + Timer.IntermediateTime[2] + ";" + Timer.CumulativeTime[2] + ";" + distances[0] + ";" + distances[1] + ";" + distances[2] + ";" + SumCollisions);
+        distances.Clear();
     }
 
     /*protected void writeLine()

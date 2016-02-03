@@ -37,9 +37,12 @@ public class GameManager : MonoBehaviour
     // trial panel
     public GameObject TrialPanel;
 
+    private CountCollision[] CountCollisions;
+
     protected void Start()
     {
         trial++;
+        CountCollisions = FindObjectsOfType<CountCollision>();
 
         if (instance == null)
             instance = this;
@@ -62,6 +65,7 @@ public class GameManager : MonoBehaviour
 
     protected void Update()
     {
+
     }
 
 	public void InstantiateNextObject()
@@ -94,18 +98,23 @@ public class GameManager : MonoBehaviour
             }
 
             index = 0;
-            trial++;
+            
 
             if (trial == TrialsQuantity)
             {
-                trial = 1;
+                trial = 0;
                 // show menu to click next condition
             }
+
+            trial++;
+            Log.LogSave();
+            Timer.InitTimer();
+            CountCollisions[0].ResetCollision();
+            CountCollisions[1].ResetCollision();
 
             Arrow.SetActive(true);
             TrialPanel.GetComponent<Animation>().Play("HideTrials");
             Arrow.GetComponent<Animation>().Play("ShowArrow");
-            // reset timmer - And I didnt see how the log is working... but: tell the log to save the trial
         }
     }
 }
